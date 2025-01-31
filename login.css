@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* navbar css */
+
+
+
+/* Different for all the page */
+
+
+body{
+    background-color: #EFEFEF;
+}
+
+.content{
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.login-content{
+    background-color: #CAD2C5;
+    height: 400px;
+    width: 500px;
+    font-size: 1.2rem;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px #2E2F2F solid;
+}
+
+.login-heading{
+    color: #112A46;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2.5rem;
+    margin-top: 15px;
+    margin-bottom: 15px ;
+    font-weight: bold;
+    font-weight: bolder;
+}
+
+.login-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 236px;
+    width: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.login-form label{
+    display: block;
+    color: #112A46;
+    margin: 5px;
+    
+}
+
+.input-box{
+    margin: 20px;
+    font-size: 1.3rem;
+}
+
+input{
+    margin-left: 5px;
+    width: 350px;
+    font-size: 1.1rem;
+    padding: 7px 7px 7px 5px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    outline-width: 0;
+}
+
+.login-button{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    text-align: center;
+    width: 80%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2E2F2F;
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+    border: 2px solid #2E2F2F;
+}
+
+button:hover{
+    background-color: #CDDDDD;
+    color: #2E2F2F;
+}
+
+.signup-ask{
+    margin: 25px 0px 0px 75px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

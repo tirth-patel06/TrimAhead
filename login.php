@@ -10,7 +10,8 @@ session_start();
     <link rel="stylesheet" href="./navbarNorm.css">
     <link rel="stylesheet" href="./login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" type="image/png" href="./image/Logo/favicon-logo.png/">
+    <link rel="icon" type="image/png" href="./image/Logo/favicon-logo.png"/>
+    <link rel="stylesheet" href="./footer.css">
 </head>
 <body>
     <header>
@@ -20,7 +21,7 @@ session_start();
             </div>
             <div class="search">
                 <div class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-magnifying-glass""></i>
                 </div>
                 <input type="text" placeholder="Enter Pincode" class="input-box">
             </div>
@@ -39,29 +40,96 @@ session_start();
                 Login
             </div>
             <div class="login-form">
-                <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+                <form action="./alogin-index.html" method="POST">
                     <div class="input-box">
                         <label for="email" >Email :</label>
-                        <input type="email" id="email" name = "Email" placeholder="Enter Registered Email" >
+                        <input type="email" id="email" placeholder="Enter Registered Email">
                     </div>
                     <div class="input-box">
                         <label for="password" >Password :</label>
-                        <input type="password" id="password" name = "Password" placeholder="Enter Your Password" >
+                        <input type="password" id="password" placeholder="Enter Your Password">
                     </div>
                     <div class="login-button">
-                        <button type="submit" name = "Submit">Login</button>
+                        <button type="submit">Login</button>
                     </div>
                 </form>
             </div>
             <div class="signup-ask">
-                New User ?
+                New User ? 
                 <a href="./signUp_ask.html">Create new account</a>
             </div>
         </div>
     </div>
 
     <footer>
+        <div class="footer-content">
+            <div class="footer-main-info-link-box">
+                <div class="footer-main-info-link-box-title">
+                    ABOUT
+                </div>
+                <ul>
+                    <li><a href="">Contect Us</a></li>
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Careers</a></li>
+                    <li><a href="">Press</a></li>
+                    <li><a href="">Corporate Information</a></li>
+                </ul>
+            </div>
+            <div class="footer-main-info-link-box">
+                <div class="footer-main-info-link-box-title">
+                    ABOUT
+                </div>
+                <ul>
+                    <li><a href="">Payment</a></li>
+                    <li><a href="">Booking</a></li>
+                    <li><a href="">Cancellation & Return</a></li>
+                    <li><a href="">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-main-info-link-box">
+                <div class="footer-main-info-link-box-title">
+                    CONSUMER POLICY
+                </div>
+                <ul>
+                    <li><a href="">Cancellation & Return</a></li>
+                    <li><a href="">Terms Of Use</a></li>
+                    <li><a href="">Security</a></li>
+                    <li><a href="">Privacy</a></li>
+                    <li><a href="">Sitemap</a></li>
+                    <li><a href="">Grievance Redressal</a></li>
+                    <li><a href="">EPR Compliance</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-main-info-box">
+                <div class="info1">
+                    <div class="footer-main-info-box-title">
+                        Mail Us:
+                    </div>
+                        <pre>
+TrimAhead Internet Private Limited,
+Swami Vivekananda Boys Hostel,
+Motilal Nehru National Institute of Technology 
+Campus, Prayagraj,
+211004, Uttar Pradesh, India
+                        </pre>
 
+                    <div class="footer-main-info-box-title">
+                        Social:
+                    </div>
+
+                    <div class="footer-info-social-media-icon">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-brand-logo">
+                <img src="./image/Logo/WCNBG.png" alt="">
+            </div>
+        </div>
     </footer>
 
     <script src="./navbarNorm.js"></script>

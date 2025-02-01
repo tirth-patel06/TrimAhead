@@ -47,7 +47,7 @@ session_start();
                     </div>
                     <div class="input-box">
                         <label for="password" >Password :</label>
-                        <input type="password" id="password" placeholder="Enter Your Password">
+                        <input type="password" id="password" placeholder="Enter Your Password" pattern="[!@#$%^&*][a-z][A-Z][0-9]" required>
                     </div>
                     <div class="login-button">
                         <button type="submit">Login</button>

@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer{
+    position: relative;
+    bottom: 0px;
+}
+
+.footer-content{
+    width: auto;
+    height: 280px;
+    /* background-color: #101015; */
+    background-color: #121212;
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 25px;
+}
+
+.footer-info{
+    background-color: #212121;
+    padding: 30px 60px 70px 60px;
+    border-bottom: 2px solid #474D5D;
+}
+
+.footer-main-info-link-box{
+    height: 210px;
+    width: 160px;
+    font-size: 0.85rem;
+}
+
+.footer-main-info-link-box a{
+    color: white;
+    text-decoration: none;
+}
+
+.footer-main-info-link-box li{
+    list-style-type: none;
+    padding-bottom: 3px;
+}
+
+.footer-main-info-link-box a:hover{
+    text-decoration: underline;}
+
+.footer-main-info-link-box-title{
+    color: #878787;
+    padding: 16px 0px 16px;
+}
+
+.footer-main-info-box{
+    /* height: 210px; */
+    width: 260px;
+    color: white;
+    font-size: 0.85rem;
+    display: flex;
+}
+
+.footer-main-info-box-title{
+    color: #878787;
+    padding: 16px 0px 16px;
+    font-size: 0.8rem;
+}
+
+.footer-info-social-media-icon{
+    font-size: 1.4rem;
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.footer-brand-logo{
+    width: 164px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+
+}
+
+.footer-brand-logo img{
+    width: 164px;
+    height: 50px;
+    cursor: pointer;
+}

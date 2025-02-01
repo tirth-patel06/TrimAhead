@@ -166,3 +166,35 @@ input.alogin-input-box, textarea {
     font-size: 1rem;
     margin: 0;
 }
+
+/* Dropdown menu */
+
+.navbar details{
+    position: relative;   
+}
+
+.navbar details ul{
+    position: absolute;
+    font-size: 1.1rem;
+    left: 30%;
+    top: 60px;
+    list-style: none;
+    width: max-content;
+    background-color: #eef8fd;
+    border-radius: 5px;
+}
+
+.navbar details ul li{
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar details ul li:hover{
+    background-color: #daf2fe;
+    /* color: white; */
+}
+
+.navbar details summary{
+    list-style: none;
+}

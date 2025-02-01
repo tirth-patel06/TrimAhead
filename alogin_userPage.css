@@ -24,6 +24,7 @@ body{
 .content-box{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 93%;
@@ -102,12 +103,13 @@ body{
 }
 
 .extra-option{
-    height: auto;
+    height: 100px;
     display: flex;
     width: 220px;
     justify-content: center;
     align-items: center;
     margin-right: 40px;
+    flex-wrap: wrap;
 }
 
 .book-button button{

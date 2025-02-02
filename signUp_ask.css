@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #EFEFEF;
+}
+
+.content{
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.ask-content{
+    background-color: #CAD2C5;
+    height: 400px;
+    width: 500px;
+    font-size: 1.2rem;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px #2E2F2F solid;
+}
+
+.ask-heading{
+    color: #112A46;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 2.5rem;
+    margin-top: 15px;
+    margin-bottom: 15px ;
+    font-weight: bold;
+    font-weight: bolder;
+}
+
+.ask-choise{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 180px;
+    margin-top: 60px;
+}
+
+button{
+    text-align: center;
+    width: 80%;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2E2F2F;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+    border: 2px solid #2E2F2F;
+}
+
+button:hover{
+    background-color: #CDDDDD;
+    color: #2E2F2F;
+}
+
+.login-ask{
+    font-size: 1.3rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

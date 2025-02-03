@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: #EFEFEF;
+}
+
+.content{
+    width: 100%;
+    min-height: 800px;
+    margin-top: 100px;
+}
+
+.pbook-title{
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 2rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.shop-element{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.content-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 93%;
+    height: 260px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.shop-detail{
+    height: 260px;
+    display: flex;
+    align-items: center;
+}
+
+.shop-image{
+    margin-left: 20px;
+    height: 220px;
+    width: 220px;
+    background-size: cover;
+    /* background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center; */
+}
+
+.shop-info{
+    width: 300px;
+    margin-left: 20px;
+    height: 200px;
+}
+
+.shop-name{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.shop-location{
+    font-size: 1;
+    color: #2e2f2f;
+}
+
+.queue-detail{
+    width: 200px;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.queue-length{
+    display: flex;
+    font-size: 1.2rem;
+    color: #2e2f2f;
+    margin-bottom: 120px;
+}
+
+.queue-length-digit{
+    padding-left: 5px;
+    font-size: 1.5rem;
+    color: crimson;
+}
+
+.expected-time{
+    display: flex;
+    color: crimson;
+    font-size: 1.1rem;
+}
+
+.expected-time-digit{
+    font-size: 1.1rem;
+    padding-left: 5px;
+}
+
+.extra-option{
+    height: 100px;
+    display: flex;
+    width: 230px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: 40px;
+    color: #453030;
+}
+
+.book-time{
+    display: flex;
+}
+
+.book-date{
+    display: flex;
+}
+
+.transection-id{
+    display: flex;
+}

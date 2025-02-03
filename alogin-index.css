@@ -19,27 +19,60 @@ body{
     margin-bottom: 100px;
 }
 
-.brand-banner{
-    width: 1513px; /* Example width */
-    height: 860px; /* Example height */
-    
+.brand-banner {
+    width: 100%;
+    height: auto;
+    max-height: 860px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .image {
-    position: relative;
-    width: 1513px; /* Example width */
-    height: 860px; /* Example height */
-    
-    /* The actual image */
+    width: 100%;
+    height: 100%;
+    min-height: 300px; /* Ensures visibility on small screens */
     background: url('./image/brand-banner.jpeg') no-repeat center/cover;
     
-    /* Apply gradient mask */
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+    /* Ensure the gradient mask remains intact */
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     -webkit-mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     mask-size: 100% 100%;
     mask-repeat: no-repeat;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1540px) {
+    .image {
+        height: 860px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .image {
+        height: 600px;
+    }
+}
+
+@media (max-width: 992px) {
+    .image {
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .image {
+        height: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    .image {
+        height: 300px;
+    }
 }
 
 .top-shop{

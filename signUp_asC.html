@@ -1,3 +1,8 @@
+<?php
+session_start();
+?>
+<a href="login.php"></a>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,41 +43,41 @@
                 Sign-Up
             </div>
             <div class="signUp-form">
-                <form action="./login.html" method="POST">
+                <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
                     <div class="input-box">
                         <label for="fname" >Full Name</label>
-                        <input type="text" id="fname" placeholder="Enter Your Full Name">
+                        <input type="text" id="fname" name="Name" placeholder="Enter Your Full Name" required>
                     </div>
                     <div class="input-box">
                         <label for="age" >Age</label>
-                        <input type="text" id="age" placeholder="Enter Your Full Name">
+                        <input type="text" id="age" name = "Age" placeholder="Enter Your Age" required>
                     </div>
                     <div class="input-box">
                         <label for="adder" >Address</label>
-                        <input type="text" id="addr" placeholder="Enter Your Address">
+                        <input type="text" id="addr" name="Address" placeholder="Enter Your Address" required>
                     </div>
                     <div class="input-box">
                         <label for="pincode" >Pincode</label>
-                        <input type="number" id="pincode" placeholder="Enter Pincode">
+                        <input type="number" id="pincode" name = "Pincode" placeholder="Enter Pincode" required>
                     </div>
                     <div class="input-box">
                         <label for="email" >E-mail</label>
-                        <input type="email" id="email" placeholder="Enter E-mail">
+                        <input type="email" id="email" name = "Email" placeholder="Enter E-mail" required>
                     </div>
                     <div class="input-box">
                         <label for="phone" >Phone Number</label>
-                        <input type="number" id="phone" placeholder="10 Digit Number">
+                        <input type="number" id="phone" name = "Phone_Number" placeholder="10 Digit Number" required>
                     </div>
                     <div class="input-box">
                         <label for="password" >Password :</label>
-                        <input type="password" id="password" placeholder="Enter Password">
+                        <input type="password" id="password" name = "Password" placeholder="Enter Password" required>
                     </div>
                     <div class="input-box">
                         <label for="cpassword" >Confirm Password :</label>
-                        <input type="password" id="cpassword" placeholder="Re-Enter Password">
+                        <input type="password" id="cpassword" name = "Confirm_Password" placeholder="Re-Enter Password" required>
                     </div>
                     <div class="signUp-button">
-                        <button  type="submit">Sign Up</button>
+                        <button  type="submit" name="Submit" href="signUp_asC.php" >Sign Up</button>
                     </div>
                 </form>
             </div>
@@ -158,3 +163,73 @@ Campus, Prayagraj,
     <script src="./signUp.js"></script>
 </body>
 </html>
+
+<?php
+include 'connection.php';
+
+if(isset($_POST['Submit'])){
+            $Name = $_POST['Name'];
+            $Age = $_POST['Age'];
+            $Address = $_POST['Address'];
+            $Pincode = $_POST['Pincode'];
+            $Email = $_POST['Email'];
+            $Phone_Number = $_POST['Phone_Number'];
+            $Password = $_POST['Password'];
+            $Confirm_Password = $_POST['Confirm_Password'];
+
+            $pass = password_hash($Password,PASSWORD_BCRYPT);
+            $cpass = password_hash($Confirm_Password, PASSWORD_BCRYPT);
+
+            $emailquery = "select * from `cc_project`.`customer` where Email = '$Email' " ;
+            $query = mysqli_query($con,$emailquery);
+
+            $emailcount = mysqli_num_rows($query);
+
+            if($emailcount>0){
+                 ?>
+                <script>
+                    alert("email already exists");
+                </script>
+                <?php
+
+            }else{
+                if($Password === $Confirm_Password){
+                     $insertquery = "insert into `cc_project`.`customer`(Name,Age,Address,Pincode,Email,Phone_Number,Password,Confirm_Password) values('$Name','$Age','$Address','$Pincode','$Email','$Phone_Number','$pass','$cpass')";
+                     $res = mysqli_query($con,$insertquery);
+
+                        if($res){
+                            ?>
+                               echo "<script>
+                                alert('Sign Up Successful');
+                                     window.location.href='index.php';
+                                    </script>";
+                                exit();
+
+                                <?php
+                        }
+                        else{
+                        ?>
+                        <script>
+                               alert("Sign Up Failed");
+                        </script>
+                        <?php
+
+                        }
+
+                }else{
+                     ?>
+                        <script>
+                               alert("Passwords does not match");
+                        </script>
+                        <?php
+
+                }
+            }
+
+
+
+
+
+
+}
+?>

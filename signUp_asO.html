@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+<a href="login.php"></a>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,47 +42,47 @@
                 Sign-Up
             </div>
             <div class="signUp-form">
-                <form action="./login.html" method="POST">
+                <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
                     <div class="input-box">
                         <label for="fname" >Full Name</label>
-                        <input type="text" id="fname" placeholder="Full Name Of Owner">
+                        <input type="text" id="fname" name = "Name" placeholder="Full Name Of Owner" required>
                     </div>
                     <div class="input-box">
                         <label for="sname" >Shop Name</label>
-                        <input type="text" id="sname" placeholder="Enter Your Full Name">
+                        <input type="text" id="sname" name = "Shop_Name" placeholder="Enter Your Shop Name" required>
                     </div>
                     <div class="input-box">
                         <label for="adder" >Address</label>
-                        <input type="text" id="addr" placeholder="Enter Your Address">
+                        <input type="text" id="addr" name = "Address" placeholder="Enter Your Address" required>
                     </div>
                     <div class="input-box">
                         <label for="pincode" >Pincode</label>
-                        <input type="number" id="pincode" placeholder="Enter Pincode">
+                        <input type="number" id="pincode" name = "Pincode" placeholder="Enter Pincode" required>
                     </div>
                     <div class="input-box">
                         <label for="email" >E-mail</label>
-                        <input type="email" id="email" placeholder="Enter E-mail">
+                        <input type="email" id="email" name = "Email" placeholder="Enter E-mail" required>
                     </div>
                     <div class="input-box">
                         <label for="phone" >Phone Number</label>
-                        <input type="number" id="phone" placeholder="10 Digit Number">
+                        <input type="number" id="phone" name = "Phone_Number" placeholder="10 Digit Number" required>
                     </div>
                     <div class="input-box">
                         <label for="password" >Password :</label>
-                        <input type="password" id="password" placeholder="Enter Password">
+                        <input type="password" id="password" name = "Password" placeholder="Enter Password" required>
                     </div>
                     <div class="input-box">
                         <label for="cpassword" >Confirm Password :</label>
-                        <input type="password" id="cpassword" placeholder="Re-Enter Password">
+                        <input type="password" id="cpassword" name = "Confirm_Password" placeholder="Re-Enter Password" required>
                     </div>
                     <div class="signUp-button">
-                        <button onclick="signUp()" type="submit">Sign Up</button>
+                        <button type="submit" name = "Submit" href="signUp_asO.php">Sign Up</button>
                     </div>
                 </form>
             </div>
             <div class="login-ask">
                 Old User ? 
-                <a href="./login.html">Login</a>
+                <a href="./login.php">Login</a>
             </div>
         </div>
     </div>
@@ -158,3 +162,70 @@ Campus, Prayagraj,
     <script src="./signUp.js"></script>
 </body>
 </html>
+
+<?php
+include 'connection.php';
+if(isset($_POST['Submit'])){
+            $Name	 = $_POST['Name'];
+            $Shop_Name = $_POST['Shop_Name'];
+            $Address = $_POST['Address'];
+            $Pincode = $_POST['Pincode'];
+            $Email = $_POST['Email'];
+            $Phone_Number = $_POST['Phone_Number'];
+            $Password = $_POST['Password'];
+            $Confirm_Password = $_POST['Confirm_Password'];
+
+            $pass = password_hash($Password,PASSWORD_BCRYPT);
+            $cpass = password_hash($Confirm_Password, PASSWORD_BCRYPT);
+            $emailquery = "select * from `cc_project`.`owner` where Email = '$Email' " ;
+            $query = mysqli_query($con,$emailquery);
+
+            $emailcount = mysqli_num_rows($query);
+
+            if($emailcount>0){
+                 ?>
+                <script>
+                    alert("email already exists");
+                </script>
+                <?php
+
+            }else{
+                if($Password === $Confirm_Password){
+                        $insertquery = "insert into `cc_project`.`owner`(Name,Shop_Name,Address,Pincode,Email,Phone_Number,Password,Confirm_Password) values('$Name','$Shop_Name','$Address','$Pincode','$Email','$Phone_Number','$pass','$cpass')";
+                        $res = mysqli_query($con,$insertquery);
+
+                        if($res){
+                            ?>
+                               echo "<script>
+                                alert('Sign Up Successful');
+                                     window.location.href='index.html';
+                                    </script>";
+                                exit();
+                                <?php
+                        }
+                        else{
+                        ?>
+                        <script>
+                               alert("Sign Up failed");
+                        </script>
+                        <?php
+
+                        }
+
+                }else{
+                     ?>
+                        <script>
+                               alert("Passwords does not match");
+                        </script>
+                        <?php
+
+                }
+            }
+
+
+
+
+
+
+}
+?>

@@ -3,7 +3,7 @@ document.querySelectorAll(".link").forEach(link => {
       e.preventDefault();
       document.querySelectorAll(".popupdarkbg").forEach(bg => bg.style.display = "block");
       document.querySelectorAll(".popup").forEach(popup => popup.style.display = "block");
-      document.querySelectorAll('.popupiframe').forEach(iframe => iframe.src = "./login.html");
+      document.querySelectorAll('.popupiframe').forEach(iframe => iframe.src = "./graph.php");
       
       document.querySelectorAll(".popupdarkbg").forEach(bg => {
           bg.onclick = function() {

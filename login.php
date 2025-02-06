@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,22 +37,22 @@ session_start();
                 Login
             </div>
             <div class="login-form">
-                <form action="./alogin-index.html" method="POST">
+                <form action="" method="POST">
                     <div class="input-box">
                         <label for="email" >Email :</label>
-                        <input type="email" id="email" placeholder="Enter Registered Email">
+                        <input type="email" id="email" name = "Email" placeholder="Enter Registered Email">
                     </div>
                     <div class="input-box">
                         <label for="password" >Password :</label>
-                        <input type="password" id="password" placeholder="Enter Your Password" pattern="[!@#$%^&*][a-z][A-Z][0-9]" required>
+                        <input type="password" id="password" name = "Password" placeholder="Enter Your Password" required>
                     </div>
                     <div class="login-button">
-                        <button type="submit">Login</button>
+                        <button type="submit" name = "Submit">Login</button>
                     </div>
                 </form>
             </div>
             <div class="signup-ask">
-                New User ? 
+                New User ?
                 <a href="./signUp_ask.html">Create new account</a>
             </div>
         </div>
@@ -100,7 +97,7 @@ session_start();
                     <li><a href="">EPR Compliance</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-main-info-box">
                 <div class="info1">
                     <div class="footer-main-info-box-title">
@@ -109,7 +106,7 @@ session_start();
                         <pre>
 TrimAhead Internet Private Limited,
 Swami Vivekananda Boys Hostel,
-Motilal Nehru National Institute of Technology 
+Motilal Nehru National Institute of Technology
 Campus, Prayagraj,
 211004, Uttar Pradesh, India
                         </pre>
@@ -142,7 +139,7 @@ include "connection.php";
 if(isset($_POST['Submit'])){
     $Email = $_POST['Email'];
     $Password = $_POST['Password'];
-    $emailo_search = "select * from `cc_project`.`owner` where Email = '$Email' ";
+    $emailo_search = "select * from `cc_project`.`owner` where Email = '$Email'";
     $emailc_search = "select * from `cc_project`.`customer` where Email = '$Email' ";
     $queryo = mysqli_query($con,$emailo_search);
     $queryc = mysqli_query($con,$emailc_search);
@@ -157,7 +154,16 @@ if(isset($_POST['Submit'])){
         $pass_decode = password_verify($Password, $db_pass);               //predefined function h jo encrypted password ko verify krvata h user inputted password se
 
          if($pass_decode){
-         header("location:vdashboard.html");
+             $vid=$emailo_pass['serial_no'];
+             $res=mysqli_fetch_array($queryo);
+          ?>
+         echo "<script>
+                                alert('Login Successful');
+
+                                     window.location.href='vDashbord.php?id=' + <?php echo $vid;?>;
+                                    </script>";
+                                exit();
+                                <?php
 
          }else {
              ?>
@@ -175,7 +181,16 @@ if(isset($_POST['Submit'])){
         $pass_decode = password_verify($Password, $db_pass);               //predefined function h jo encrypted password ko verify krvata h user inputted password se
 
          if($pass_decode){
-          //header("location:vdashboard.html");
+             $mob=$emailc_pass['Phone_Number'];
+             ?>
+         echo "<script>
+                                alert('Login Successful');
+
+                                     window.location.href='alogin-index.php?mobile=' + <?php echo $mob;?>;
+                                    </script>";
+                                exit();
+                                <?php
+
 
          }else {
              ?>

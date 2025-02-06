@@ -1,19 +1,14 @@
-<?php
-session_start();
-?>
-<a href="login.php"></a>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Page</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="./navbarNorm.css">
-    <link rel="stylesheet" href="./signUp.css">
+    <link rel="stylesheet" href="./login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/png" href="./image/Logo/favicon-logo.png"/>
     <link rel="stylesheet" href="./footer.css">
-</head>
 </head>
 <body>
     <header>
@@ -37,52 +32,28 @@ session_start();
     </header>
 
     <div class="content">
-        <div class="signUp-content">
-            <div class="signUp-heading">
-                Sign-Up
+        <div class="login-content">
+            <div class="login-heading">
+                Login
             </div>
-            <div class="signUp-form">
-                <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
+            <div class="login-form">
+                <form action="" method="POST">
                     <div class="input-box">
-                        <label for="fname" >Full Name</label>
-                        <input type="text" id="fname" name = "Name" placeholder="Full Name Of Owner" required>
-                    </div>
-                    <div class="input-box">
-                        <label for="sname" >Shop Name</label>
-                        <input type="text" id="sname" name = "Shop_Name" placeholder="Enter Your Shop Name" required>
-                    </div>
-                    <div class="input-box">
-                        <label for="adder" >Address</label>
-                        <input type="text" id="addr" name = "Address" placeholder="Enter Your Address" required>
-                    </div>
-                    <div class="input-box">
-                        <label for="pincode" >Pincode</label>
-                        <input type="number" id="pincode" name = "Pincode" placeholder="Enter Pincode" required>
-                    </div>
-                    <div class="input-box">
-                        <label for="email" >E-mail</label>
-                        <input type="email" id="email" name = "Email" placeholder="Enter E-mail" required>
-                    </div>
-                    <div class="input-box">
-                        <label for="phone" >Phone Number</label>
-                        <input type="number" id="phone" name = "Phone_Number" placeholder="10 Digit Number" required>
+                        <label for="email" >Email :</label>
+                        <input type="email" id="email" name = "Email" placeholder="Enter Registered Email">
                     </div>
                     <div class="input-box">
                         <label for="password" >Password :</label>
-                        <input type="password" id="password" name = "Password" placeholder="Enter Password" required>
+                        <input type="password" id="password" name = "Password" placeholder="Enter Your Password" required>
                     </div>
-                    <div class="input-box">
-                        <label for="cpassword" >Confirm Password :</label>
-                        <input type="password" id="cpassword" name = "Confirm_Password" placeholder="Re-Enter Password" required>
-                    </div>
-                    <div class="signUp-button">
-                        <button type="submit" name = "Submit" href="signUp_asO.php">Sign Up</button>
+                    <div class="login-button">
+                        <button type="submit" name = "Submit">Login</button>
                     </div>
                 </form>
             </div>
-            <div class="login-ask">
-                Old User ? 
-                <a href="./login.php">Login</a>
+            <div class="signup-ask">
+                New User ?
+                <a href="./signUp_ask.html">Create new account</a>
             </div>
         </div>
     </div>
@@ -126,7 +97,7 @@ session_start();
                     <li><a href="">EPR Compliance</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-main-info-box">
                 <div class="info1">
                     <div class="footer-main-info-box-title">
@@ -135,7 +106,7 @@ session_start();
                         <pre>
 TrimAhead Internet Private Limited,
 Swami Vivekananda Boys Hostel,
-Motilal Nehru National Institute of Technology 
+Motilal Nehru National Institute of Technology
 Campus, Prayagraj,
 211004, Uttar Pradesh, India
                         </pre>
@@ -159,73 +130,78 @@ Campus, Prayagraj,
     </footer>
 
     <script src="./navbarNorm.js"></script>
-    <script src="./signUp.js"></script>
 </body>
 </html>
 
 <?php
-include 'connection.php';
+
+include "connection.php";
 if(isset($_POST['Submit'])){
-            $Name	 = $_POST['Name'];
-            $Shop_Name = $_POST['Shop_Name'];
-            $Address = $_POST['Address'];
-            $Pincode = $_POST['Pincode'];
-            $Email = $_POST['Email'];
-            $Phone_Number = $_POST['Phone_Number'];
-            $Password = $_POST['Password'];
-            $Confirm_Password = $_POST['Confirm_Password'];
+    $Email = $_POST['Email'];
+    $Password = $_POST['Password'];
+    $emailo_search = "select * from `cc_project`.`owner` where Email = '$Email'";
+    $emailc_search = "select * from `cc_project`.`customer` where Email = '$Email' ";
+    $queryo = mysqli_query($con,$emailo_search);
+    $queryc = mysqli_query($con,$emailc_search);
 
-            $pass = password_hash($Password,PASSWORD_BCRYPT);
-            $cpass = password_hash($Confirm_Password, PASSWORD_BCRYPT);
-            $emailquery = "select * from `cc_project`.`owner` where Email = '$Email' " ;
-            $query = mysqli_query($con,$emailquery);
+    $emailo_count = mysqli_num_rows($queryo);
+    $emailc_count = mysqli_num_rows($queryc);             //for searching in rows
 
-            $emailcount = mysqli_num_rows($query);
+    if($emailo_count){                                  //agar email mil bhi gya toh bhi chlegi
+       $emailo_pass = mysqli_fetch_assoc($queryo);
 
-            if($emailcount>0){
-                 ?>
-                <script>
-                    alert("email already exists");
-                </script>
-                <?php
+        $db_pass = $emailo_pass['Password'];                          //fetch the password corresponding to the email
+        $pass_decode = password_verify($Password, $db_pass);               //predefined function h jo encrypted password ko verify krvata h user inputted password se
 
-            }else{
-                if($Password === $Confirm_Password){
-                        $insertquery = "insert into `cc_project`.`owner`(Name,Shop_Name,Address,Pincode,Email,Phone_Number,Password,Confirm_Password) values('$Name','$Shop_Name','$Address','$Pincode','$Email','$Phone_Number','$pass','$cpass')";
-                        $res = mysqli_query($con,$insertquery);
+         if($pass_decode){
+             $vid=$emailo_pass['serial_no'];
+             $res=mysqli_fetch_array($queryo);
+          ?>
+         echo "<script>
+                                alert('Login Successful');
 
-                        if($res){
-                            ?>
-                               echo "<script>
-                                alert('Sign Up Successful');
-                                     window.location.href='index.html';
+                                     window.location.href='vDashbord.php?id=' + <?php echo $vid;?>;
                                     </script>";
                                 exit();
                                 <?php
-                        }
-                        else{
-                        ?>
-                        <script>
-                               alert("Sign Up failed");
-                        </script>
-                        <?php
 
-                        }
+         }else {
+             ?>
+             <script>
+                    alert("Incorrect Password");
+             </script>
+             <?php
+         }
+    }
+    else{
+        if($emailc_count){                                  //agar email mil bhi gya toh bhi chlegi
+       $emailc_pass = mysqli_fetch_assoc($queryc);
 
-                }else{
-                     ?>
-                        <script>
-                               alert("Passwords does not match");
-                        </script>
-                        <?php
+        $db_pass = $emailc_pass['Password'];                          //fetch the password corresponding to the email
+        $pass_decode = password_verify($Password, $db_pass);               //predefined function h jo encrypted password ko verify krvata h user inputted password se
 
-                }
-            }
+         if($pass_decode){
+             $mob=$emailc_pass['Phone_Number'];
+             ?>
+         echo "<script>
+                                alert('Login Successful');
+
+                                     window.location.href='alogin-index.php?mobile=' + <?php echo $mob;?>;
+                                    </script>";
+                                exit();
+                                <?php
 
 
+         }else {
+             ?>
+             <script>
+                    alert("Incorrect Password");
+             </script>
+             <?php
+         }
+    }
 
 
-
-
+}
 }
 ?>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+
+    <link rel="stylesheet" href="userdashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="./image/Logo/favicon-logo.png"/>
+    <link rel="stylesheet" href="./navbarNorm.css">
+    <link rel="stylesheet" href="./footer.css">
+    <link rel="stylesheet" href="./analysis.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="alogin-navbar-logo">
+                <img src="./image/Logo/OCNBG.png" alt="">
+            </div>
+        </div>
+    </header>
+
+
+    <div class="dashboard">
+        <aside class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li><a href="./alogin-index.html">Home</a></li>
+                <li><a href="./livebook.html">Live Booking</a></li>
+                <li><a href="./pBook.html">Previous Booking</a></li>
+                <li><a href="./index.html">Logout</a></li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <div class="greet">
+                Welcome, 
+                <div class="greet-username">
+                    Tirth Patel
+                </div>
+            </div>
+            <div class="photo">
+                <img id="profile-img" src="./image/user-profile-photo.jpeg" alt="Profile Photo is not uploaded">
+                <input type="file" id="photo-input" name="profile-photo" accept="image/*" style="display: none;">
+                <div class="change">
+                    <button id="photo-edit" >Update</button>
+                    <span id="file-name" style="margin-left: 10px; font-size: 14px;"></span> <!-- To display file name -->
+                </div>
+            </div>
+            
+            <div class="user-info">
+                <form action="" class="form-field" method="post">
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input type="text" value="Tirth Patel" disabled>
+                        <div class="change">
+                            <button name="change" id="name" >Edit</button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="mail">E-Mail</label>
+                        <input type="text" value="abc@demo.com" disabled>
+                        <div class="change">
+                            <button name="change" id="mail" >Edit</button>
+                        </div>
+                    </div>
+                    <div class="field-phone">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" value="+91 0000000000" disabled>
+                    </div>
+                    <div class="field addr">
+                        <label for="addr">Address</label>
+                        <textarea id="autoExpand" id="addr" disabled>1st Floor, 81/32, Lal Bahadur Shastri Marg, Near, Hotstuff Crossing, Above Blackberry Showroom, Civil Lines, Prayagraj, Uttar Pradesh</textarea>
+                        <script>
+                        document.getElementById("autoExpand").addEventListener("input", function () {
+                            this.style.height = "auto";
+                            this.style.height = this.scrollHeight + "px";
+                        });
+                        </script>
+
+                        <div class="change">
+                            <button name="change" >Edit</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-button">Submit</button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="./content.js"></script>
+    <script src="./analysis.js"></script>
+    <script src="./navbarNorm.js"></script>
+    <script src="./userdashboard.js"></script>
+</body>
+</html>

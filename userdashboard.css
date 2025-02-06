@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #EFEFEF;
+}
+
+.dashboard {
+    display: flex;
+    width: 100%;
+    margin-top: 55px;
+}
+
+.sidebar {
+    width: 260px;
+    background: #2E2F2F;
+    color: white;
+    padding: 20px;
+    min-height: 92.5vh;
+}
+
+.sidebar h2 {
+    margin-bottom: 50px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin: 15px ;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+    background: #34495e;
+}
+
+/* content */
+
+body{
+    background-color: #EFEFEF;
+}
+
+.content{
+    padding-top: 10px;
+    margin: 0px 25px;
+    width: 100%;
+}
+
+.greet{
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.greet-username{
+    font-size: 2.5rem;
+    padding-left: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+}
+
+.photo img{
+    margin-left: 20px;
+    height: 200px;
+    border-radius: 2%;
+    box-shadow: #2E2F2F;
+}
+
+.photo{
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-info{
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+.field{
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 650px;
+    margin-top: 20px;
+    height: 25px;
+}
+
+.field input{
+    margin-left: 5px;
+    width: 280px;
+    font-size: 1rem;
+    padding: 7px 7px 7px 5px;
+    border-radius: 5px;
+    border: 1px solid #2E2F2F;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    outline-width: 0;
+}
+
+.change button{
+    width: 50px;
+    height: 25px;
+    text-align: center;
+    font-size:0.95rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #2E2F2F;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+    border: 2px solid #2E2F2F;
+}
+
+.field-phone{
+    font-size: 1.2rem;
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 410px;
+    margin-top: 20px;  
+}
+
+.field-phone input{
+    margin-left: 5px;
+    width: 220px;
+    font-size: 1rem;
+    padding: 7px 7px 7px 5px;
+    border-radius: 5px;
+    border: 1px solid #2E2F2F;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    outline-width: 0;
+}
+
+.addr{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 650px;
+    margin-top: 20px;
+    min-height: fit-content;
+}
+
+.addr textarea{
+    min-width: 300px;
+    min-height: 100px;
+    margin-left: 5px;
+    font-size: 1rem;
+    padding: 7px 7px 7px 5px;
+    border-radius: 5px;
+    border: 1px solid #2E2F2F;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    outline-width: 0;
+}
+
+.field label{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.submit-button{
+    height: 35px;
+    width: 250px;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: 190px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2E2F2F;
+    color: white;
+    font-size: 1.3rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    cursor: pointer;
+    border: 2px solid #2E2F2F;
+}
+
+.submit-button:hover{
+    background-color: #CDDDDD;
+    color: #2E2F2F;
+}
+
+.user-info{
+    width: 630px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#photo-edit{
+    width: 60px;
+    height: 30px;
+}

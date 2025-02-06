@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
   document.getElementById("userProfile").addEventListener("click", function() {
-    window.location.href = "#";
+    window.location.href = "./userdashboard.html";
     // pass link of userDashboard here
   });
   

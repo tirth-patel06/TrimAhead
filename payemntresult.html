@@ -1,0 +1,23 @@
+<?php
+include 'connection.php';
+include 'payment2.php';
+
+if (isset($_POST['Submit'])) {
+    $cardNumber = $_POST['card_number'];
+    $cardHolder = $_POST['card_holder'];
+    $expiryDate = $_POST['expiry_date'];
+    $cvv = $_POST['cvv'];
+    $amount = $_POST['amount'];
+
+
+    $isSuccessful = 1; // Randomly decide if payment succeeds or fails
+
+    echo "<h1>Payment Gateway</h1>";
+    echo "<p>Card Number: **** **** **** " . substr($cardNumber, -4) . "</p>";
+    echo "<p>Card Holder: " . htmlspecialchars($cardHolder) . "</p>";
+    echo "<p>Amount: ?" . htmlspecialchars($amount) . "</p>";
+    echo "<p>Status: " . ($isSuccessful ? "Payment Successful ??" : "Payment Failed ?") . "</p>";
+    echo "<a href='payment_form.html'>Go Back</a>";
+
+}
+?>

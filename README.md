@@ -32,7 +32,7 @@ Sign up and list shop details like name, location, and contact info.
 Manage bookings and update queue status.  
 Mark customers as "Live" or "Done" and provide real-time waiting estimates.  
 
-We have also integrated a partially trained chatbot on the homepage 
+💡We have also integrated a partially trained chatbot on the homepage 
 to enhance user interaction and provide efficient support through 
 automated responses.  
 

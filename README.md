@@ -10,31 +10,30 @@ This project is a web-based queue management system designed to enhance the cust
 
 ## 🚀 Key Features
 
-For Customers:
-✅ Search for Nearby Barber Shops
+For Customers:  
+✅ Search for Nearby Barber Shops  
 
-Uses real-time location to display nearby shops.
-Shows the exact shop address for easy navigation.
-✅ Queue Management
+Uses real-time location to display nearby shops.  
+Shows the exact shop address for easy navigation.  
+✅ Queue Management  
 
-View the live queue status of a selected shop.
-Book a slot with an estimated waiting time.
+View the live queue status of a selected shop.  
+Book a slot with an estimated waiting time.  
 
 
-For Shop Owners:
-✅ Shop Registration
+For Shop Owners:  
+✅ Shop Registration  
 
-Sign up and list shop details like name, location, and contact info.
-✅ Queue Management Dashboard
+Sign up and list shop details like name, location, and contact info.  
+✅ Queue Management Dashboard  
 
-Manage bookings and update queue status.
-Mark customers as "Live" or "Done" and provide real-time waiting estimates.
+Manage bookings and update queue status.  
+Mark customers as "Live" or "Done" and provide real-time waiting estimates.  
 
 ## Technology Stack:
-
-Frontend : HTML, CSS and JavaScript
-Backend : PHP
-Database : MySQL
+  1) Frontend : HTML,CSS and JavaScript
+  2) Backend : PHP
+  3) Database : MySQL
 
 ## Contributors:
 

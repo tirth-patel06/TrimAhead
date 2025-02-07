@@ -15,7 +15,7 @@ body{
     /* display: flex;
     justify-content: center;
     align-items: center; */
-    margin-top: 65px;
+    margin-top: 45px;
     margin-bottom: 100px;
 }
 
@@ -129,6 +129,7 @@ body{
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 12px;
+    color: black;
 }
 
 .shop-location{

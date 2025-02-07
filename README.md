@@ -2,7 +2,7 @@
 
 <p align="center">
 </p>
-<a href="https://weekendofcode.computercodingclub.in/"> <img src="https://i.postimg.cc/njCM24kx/woc.jpg" height=30px> </a>
+<a href="https://weekendofcode.computercodingclub.in/"> <img src="https://i.postimg.cc/njCM24kx/woc.jpg" height=30px> </a>  
 Barber Shop Queue Management System
 
 ## 📌 Overview:

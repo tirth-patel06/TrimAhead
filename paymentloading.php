@@ -46,6 +46,13 @@
     </style>
 </head>
 <body>
+<?php 
+$cust_name=$_GET['cust_name'];
+$mobile=$_GET['mobile'];
+$shopid=$_GET['shopid'];
+$vendorname=$_GET['vendorname'];
+$q=$_GET['queue'];
+?>
     <div class="loading-container">
         <div class="spinner"></div>
         <h1>Processing Payment...</h1>
@@ -56,7 +63,7 @@
         // Simulate a delay for the payment process
         setTimeout(() => {
             // Redirect to a "payment successful" or "payment failed" page
-            window.location.href = "payment.html"; // Change this to the actual result page
+            window.location.href = "transaction.php?cust_name=<?php echo $cust_name?>&mobile=<?php echo $mobile?>&shopid=<?php echo $shopid?>&vendorname=<?php echo $vendorname?>&queue=<?php echo $q?>"; // Change this to the actual result page
         }, 3000); // 3 seconds delay
     </script>
 </body>

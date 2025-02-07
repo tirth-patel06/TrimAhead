@@ -80,6 +80,7 @@ body {
     height: 260px;
     display: flex;
     align-items: center;
+    color: black;
 }
 
 .shop-image{
@@ -96,6 +97,7 @@ body {
     width: 300px;
     margin-left: 20px;
     height: 200px;
+    color: black;
 }
 
 .shop-name{
@@ -103,6 +105,7 @@ body {
     font-size: 1.8rem;
     font-weight: 600;
     margin-bottom: 12px;
+    color: black  !important;
 }
 
 .shop-location{

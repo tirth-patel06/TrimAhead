@@ -22,12 +22,6 @@ session_start();
             <div class="navbar-logo">
                 <img src="./image/Logo/OCNBG.png" alt="">
             </div>
-            <div class="search">
-                <div class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass""></i>
-                </div>
-                <input type="text" placeholder="Enter Pincode" class="input-box">
-            </div>
             <div class="login">
                 <div class="user-icon">
                     <i class="fa-regular fa-circle-user"></i>
@@ -83,7 +77,7 @@ session_start();
             </div>
             <div class="login-ask">
                 Old User ? 
-                <a href="./login.php">Login</a>
+                <a href="./login.html">Login</a>
             </div>
         </div>
     </div>
@@ -181,9 +175,14 @@ if(isset($_POST['Submit'])){
             $cpass = password_hash($Confirm_Password, PASSWORD_BCRYPT);
 
             $emailquery = "select * from `cc_project`.`customer` where Email = '$Email' " ;
+            $phonequery = "select * from `cc_project`.`customer` where Phone_Number = '$Phone_Number' " ;
+
+            $query2 = mysqli_query($con, $phonequery);
             $query = mysqli_query($con,$emailquery);
 
             $emailcount = mysqli_num_rows($query);
+            $phonecount = mysqli_num_rows($query2);
+
 
             if($emailcount>0){
                  ?>
@@ -192,7 +191,16 @@ if(isset($_POST['Submit'])){
                 </script>
                 <?php
 
-            }else{
+            }
+            else if($phonecount>0){
+                ?>
+                <script>
+                    alert("Phone number already exists");
+                </script>
+                <?php
+
+            }
+            else{
                 if($Password === $Confirm_Password){
                      $insertquery = "insert into `cc_project`.`customer`(Name,Age,Address,Pincode,Email,Phone_Number,Password,Confirm_Password) values('$Name','$Age','$Address','$Pincode','$Email','$Phone_Number','$pass','$cpass')";
                      $res = mysqli_query($con,$insertquery);
@@ -201,7 +209,7 @@ if(isset($_POST['Submit'])){
                             ?>
                                echo "<script>
                                 alert('Sign Up Successful');
-                                     window.location.href='index.php';
+                                     window.location.href='login.php';
                                     </script>";
                                 exit();
 
@@ -216,7 +224,46 @@ if(isset($_POST['Submit'])){
 
                         }
 
-                }else{
+                }
+            }
+
+            if($phonecount>0){
+                ?>
+               <script>
+                   alert("phone number already exists");
+               </script>
+               <?php
+            }else{
+                if($Password === $Confirm_Password){
+                    $insertquery = "insert into `cc_project`.`customer`(Name,Age,Address,Pincode,Email,Phone_Number,Password,Confirm_Password) values('$Name','$Age','$Address','$Pincode','$Email','$Phone_Number','$pass','$cpass')";
+                    $res = mysqli_query($con,$insertquery);
+
+                       if($res){
+                           ?>
+                              echo "<script>
+                               alert('Sign Up Successful');
+                                    window.location.href='index.php';
+                                   </script>";
+                               exit();
+
+                               <?php
+                       }
+                       else{
+                       ?>
+                       <script>
+                              alert("Sign Up Failed");
+                       </script>
+                       <?php
+
+                       }
+
+
+                }
+            }
+                    
+
+                }
+                else{
                      ?>
                         <script>
                                alert("Passwords does not match");
@@ -224,12 +271,4 @@ if(isset($_POST['Submit'])){
                         <?php
 
                 }
-            }
-
-
-
-
-
-
-}
 ?>

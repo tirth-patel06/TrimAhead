@@ -24,3 +24,15 @@ document.getElementById("photo-input").addEventListener("change", function(event
         document.getElementById("file-name").textContent = ""; // Clear if no file selected
     }
 });
+function userdash(){
+    const mobile=document.querySelector("#Phone_Number").value;
+    const name=document.querySelector("#Name").value;
+    const email=document.querySelector("#Email").value;
+    const address=document.querySelector("#Address").value;
+    location.href="userdash.php?Name="+name+"&mobile="+mobile+"&Email="+email+"&Address="+address;
+
+
+}
+function Submit(){
+    alert("Your request has been submitted");
+}

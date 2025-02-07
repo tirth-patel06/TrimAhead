@@ -10,56 +10,87 @@
     <link rel="icon" type="image/png" href="./image/Logo/favicon-logo.png"/>
     <link rel="stylesheet" href="./footer.css">
 </head>
+<?php
+$id=$_GET['id'];
+    include 'connection.php';
+   $selectquery="select * from `cc_project`.`queue` where VendorId='$id'";
+   $selectquery01="select * from `cc_project`.`owner` where serial_no='$id'";
+   $query=mysqli_query($con,$selectquery);
+$num=mysqli_num_rows($query);
+$res=mysqli_fetch_array($query);
+$query01=mysqli_query($con,$selectquery01);
+$num01=mysqli_num_rows($query01);
+$res01=mysqli_fetch_array($query01);
+
+$shop1=$res01['serial_no'];
+ 
+ ?>
 <body>
     <header>
         <div class="navbar">
-            <div class="vlogin-navbar-logo">
-                <img src="./image/Logo/OCNBG.png" alt="">
+            <div class="navbar-logo">
+            <a href="vDashbord.php?id=<?php echo $id?>"><img src="./image/Logo/OCNBG.png" alt=""></a> 
             </div>
             <div class="shop-name">
-                Shop Name
+            <?php echo $res01['Shop_Name'];?>
             </div>
             <div class="shop-queue">
                 <pre>Queue length : </pre>
                 <div class="shop-queue-digit">
-                    6
+                <?php echo $res01['Queue'];?>
                 </div>
             </div>
             <div class="logout">
+                
                 <div class="logout-icon">
-                    <i class="fa-solid fa-right-from-bracket"></i>
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <a href="index.php" class="logout-icon ">
+                 <input type="hidden" name="vendorid" value="<?php echo $id;?>" id="vendorid">
                 </div>
+                
                 Logout
+                </a>
             </div>
+           
         </div>
+      
     </header>
 
     <div class="content">
         <div class="greet-box">
             Welcome,
             <div class="owner-name">
-                Owner Name
+                <?php echo $res01['Shop_Name'];?>
             </div>
         </div>
         <div class="customer-list">
             <div class="customer-list-title">
                 Queue of Customer 
             </div>
+            <?php 
+           $i=0;
+           while($res=mysqli_fetch_array($query)){
+       
+             
+           
+               ?>
             <div class="customer-data">
+          
                 <div class="customer-box">
+          
                     <div class="customer-detail-box">
                         <div class="customer-photo">
                             <img src="./image/user-profile-photo.jpeg" alt="">
                         </div>
                         <div class="customer-personal-info">
                             <div class="customer-name">
-                                Ajeet Ahanthem
+                            <?php echo $res['Customer'];?>
                             </div>
                             <div class="customer-contect">
                                 Contact Detail
                                 <div class="customer-phone">
                                     Phone :
-                                    <a href="tel:+910000000000">+91 0000000000</a>
+                                    <a href="tel:+910000000000"> <?php echo $res['Mobile'];?></a>
                                 </div>
                                 <div class="customer-mail">
                                     Email ID :
@@ -71,27 +102,35 @@
                     <div class="customer-satus">
                         Customer Status
                         <div class="customer-status-button">
+                          
                             <div class="live">
                                 <button>Live</button>
                             </div>
                             <div class="done">
-                                <button>Done</button>
+                                <!-- <button id="done_btn">Done</button> -->
+                                <a href="deletewithupdate.php?id=<?php echo $res['Mobile'];?>&shop=<?php echo $shop1?>&queue=<?php echo $res01['Queue'];?>&shopid=<?php echo $id?>">Done</a>
                             </div>
                         </div>
                         <div class="expected-time">
                             <pre>Expected Arrival Time : </pre>
                             <div class="exrected-time-digit">
-                                15
+                               <?php echo $i*25;      $i++;?>
                             </div>
                             <pre class="exrected-time-digit-unit"> min</pre>
                         </div>
                     </div>
                 </div>
                 <div class="customer-not-come">
-                    <button>Customer don't Come</button>
-                </div>
+                    <button>
+                <a href="deletewithupdate.php?id=<?php echo $res['Mobile'];?>&shop=<?php echo $shop1?>&queue=<?php echo $res01['Queue'];?>&shopid=<?php echo $id?>">Not Visited</a>
+                </button>   
             </div>
+            
+            </div>
+            <?php } ?>
         </div>
+      
+      
     </div>
 
     <footer>

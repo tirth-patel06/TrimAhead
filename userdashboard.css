@@ -22,7 +22,6 @@ body {
     color: white;
     padding: 20px;
     min-height: 92.5vh;
-    position: fixed;
 }
 
 .sidebar h2 {
@@ -59,7 +58,6 @@ body{
     padding-top: 10px;
     margin: 0px 25px;
     width: 100%;
-    margin-left: 285px;
 }
 
 .greet{

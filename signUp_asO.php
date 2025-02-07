@@ -75,6 +75,10 @@ session_start();
                         <label for="cpassword" >Confirm Password :</label>
                         <input type="password" id="cpassword" name = "Confirm_Password" placeholder="Re-Enter Password" required>
                     </div>
+                    <div class="input-box">
+                        <label for="profile-photo" >Profile Photo :</label>
+                        <input type="file" id="photo-input" name="profile-photo" accept="image/*" >
+                    </div>
                     <div class="signUp-button">
                         <button type="submit" name = "Submit" href="signUp_asO.php">Sign Up</button>
                     </div>
@@ -218,14 +222,7 @@ if(isset($_POST['Submit'])){
                                alert("Passwords does not match");
                         </script>
                         <?php
-
                 }
             }
-
-
-
-
-
-
 }
 ?>

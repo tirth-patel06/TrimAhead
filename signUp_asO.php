@@ -21,12 +21,6 @@ session_start();
             <div class="navbar-logo">
                 <img src="./image/Logo/OCNBG.png" alt="">
             </div>
-            <div class="search">
-                <div class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass""></i>
-                </div>
-                <input type="text" placeholder="Enter Pincode" class="input-box">
-            </div>
             <div class="login">
                 <div class="user-icon">
                     <i class="fa-regular fa-circle-user"></i>
@@ -74,10 +68,6 @@ session_start();
                     <div class="input-box">
                         <label for="cpassword" >Confirm Password :</label>
                         <input type="password" id="cpassword" name = "Confirm_Password" placeholder="Re-Enter Password" required>
-                    </div>
-                    <div class="input-box">
-                        <label for="profile-photo" >Profile Photo :</label>
-                        <input type="file" id="photo-input" name="profile-photo" accept="image/*" >
                     </div>
                     <div class="signUp-button">
                         <button type="submit" name = "Submit" href="signUp_asO.php">Sign Up</button>
@@ -181,10 +171,17 @@ if(isset($_POST['Submit'])){
 
             $pass = password_hash($Password,PASSWORD_BCRYPT);
             $cpass = password_hash($Confirm_Password, PASSWORD_BCRYPT);
+
             $emailquery = "select * from `cc_project`.`owner` where Email = '$Email' " ;
+            $phonequery = "select * from `cc_project`.`owner` where Phone_Number = '$Phone_Number' " ;
+
             $query = mysqli_query($con,$emailquery);
+            $query2 = mysqli_query($con, $phonequery);
+
 
             $emailcount = mysqli_num_rows($query);
+            $phonecount = mysqli_num_rows($query2);
+
 
             if($emailcount>0){
                  ?>
@@ -193,16 +190,33 @@ if(isset($_POST['Submit'])){
                 </script>
                 <?php
 
+            }
+            else if($phonecount>0){
+                ?>
+                <script>
+                    alert("Phone number already exists");
+                </script>
+                <?php
+
             }else{
                 if($Password === $Confirm_Password){
+                    $insertquery = "insert into `cc_project`.`owner`(Name,Shop_Name,Address,Pincode,Email,Phone_Number,Password,Confirm_Password) values('test ','test','test','$Pincode','test','test','$pass','$cpass')";
+                    $res4 = mysqli_query($con,$insertquery);
                         $insertquery = "insert into `cc_project`.`owner`(Name,Shop_Name,Address,Pincode,Email,Phone_Number,Password,Confirm_Password) values('$Name','$Shop_Name','$Address','$Pincode','$Email','$Phone_Number','$pass','$cpass')";
                         $res = mysqli_query($con,$insertquery);
+                        $q="select * from `cc_project`.`owner` ORDER BY serial_no DESC LIMIT 1";
+                        $query=mysqli_query($con,$q);
+                        $res01=mysqli_fetch_array($query);
+                        $vid=number_format($res01['serial_no'])+1;
 
+                        $q1 = "insert into `cc_project`.`queue`(Vendor,Customer,Mobile,Times,VendorId) values('$Shop_Name','test','0000000','sample',$vid)";
+                        $res02 = mysqli_query($con,$q1);
+                    
                         if($res){
                             ?>
                                echo "<script>
                                 alert('Sign Up Successful');
-                                     window.location.href='index.html';
+                                     window.location.href='login.php';
                                     </script>";
                                 exit();
                                 <?php
@@ -222,7 +236,14 @@ if(isset($_POST['Submit'])){
                                alert("Passwords does not match");
                         </script>
                         <?php
+
                 }
             }
+
+
+
+
+
+
 }
 ?>

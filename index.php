@@ -12,12 +12,21 @@
     <link rel="stylesheet" href="./footer.css">
     <link rel="stylesheet" href="./analysis.css">
 </head>
+<?php
+    include 'connection.php';
+   $selectquery="select * from `cc_project`.`owner`";
+   $query=mysqli_query($con,$selectquery);
+$num=mysqli_num_rows($query);
+$res=mysqli_fetch_array($query);
+
+ 
+ ?>
 <body>
 
     <header>
         <div class="navbar">
             <div class="navbar-logo">
-                <img src="./image/Logo/OCNBG.png" alt="">
+               <a href="index.php"><img src="./image/Logo/OCNBG.png" alt=""></a> 
             </div>
             <div class="search">
                 <div class="search-icon">
@@ -25,12 +34,14 @@
                 </div>
                 <input type="text" placeholder="Enter Pincode" class="input-box">
             </div>
-            <div class="login">
+            <a href="login.php">
+            <div class="login" >
                 <div class="user-icon">
                     <i class="fa-regular fa-circle-user"></i>
                 </div>
                 Login
             </div>
+            </a>
         </div>
     </header>
 
@@ -43,7 +54,68 @@
             <div class="top-heading">
                 Famous Shops in Your City
             </div>
+            <?php 
+            $i=0;
+            while($res=mysqli_fetch_array($query)){
+                if($i==3){
+                    break;
+                }
+                $i++;
+            
+                ?>
             <div class="content-box">
+         
+                <div class="shop-detail">
+                    
+                    <div class="shop-image" style="background-image: url(./image/shop-image.jpg);"></div>
+                    <div class="shop-info">
+                        <div class="shop-name">
+
+                        <?php echo $res['Shop_Name'];?>
+                        </div>
+                        <div class="shop-location">
+                        <?php echo $res['Address'];?>
+                        </div>
+                    </div>
+                </div>
+                <div class="queue-detail">
+                    <div class="queue-length">
+                        Length of Queue :
+                        <div class="queue-length-digit">
+                        <?php echo $res['Queue'];?>
+                        </div>
+                    </div>
+                    <div class="expected-time">
+                        Expected time:
+                        <div class="expected-time-digit">
+                        <?php $time= $res['Queue'];
+                        $timeup=number_format($time) * 25;
+                        echo $timeup . " minutes";
+                        ?>
+                        </div>
+                    </div>
+                </div>
+                <input id="mobile" type="hidden" value="<?php echo $mobile;?>">
+                <input id="serial_no" type="hidden" value="<?php echo $res['serial_no'];?>">
+                <input id="vname" type="hidden" value="<?php echo $res['Shop_Name'];?>">
+                <input id="customer" type="hidden" value="<?php echo $res1['Name'];?>">
+                <input id="queue" type="hidden" value="<?php echo $res['Queue'];?>">
+                <div class="extra-option">
+                    <div class="book-button" onclick="login()">
+                        <button>BOOK</button>
+                    </div>
+                    <div class="analysis">
+                        <div class="main">
+                            <a href="" class="link">Check Shop Analysis</a><br>
+                        </div>
+                        
+                        <div class="popup"><iframe class="popupiframe"></iframe></div>
+                        <div class="popupdarkbg"></div>
+                    </div>
+                </div>
+             </div>
+             <?php }?>
+            <!-- <div class="content-box">
                 <div class="shop-detail">
                     <div class="shop-image" style="background-image: url(./image/shop-image.jpg);"></div>
                     <div class="shop-info">
@@ -63,7 +135,7 @@
                         </div>
                     </div>
                     <div class="expected-time">
-                        Expected time :
+                        Ecpected time :
                         <div class="expected-time-digit">
                             90 min
                         </div>
@@ -73,96 +145,7 @@
                     <div class="book-button" onclick="login()">
                         <button>BOOK</button>
                     </div>
-                    <div class="analysis">
-                        <div class="main">
-                            <a href="" class="link">Check Shop Analysis</a><br>
-                            </div>
-                            
-                            <div class="popup"><iframe class="popupiframe"></iframe></div>
-                            <div class="popupdarkbg"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-box">
-                <div class="shop-detail">
-                    <div class="shop-image" style="background-image: url(./image/shop-image.jpg);"></div>
-                    <div class="shop-info">
-                        <div class="shop-name">
-                            Royal Razor
-                        </div>
-                        <div class="shop-location">
-                            46A/1B Near Santosh Sweets, Behind SBI Bank, Teliarganj, Prayagraj, Uttar Pradesh 211002
-                        </div>
-                    </div>
-                </div>
-                <div class="queue-detail">
-                    <div class="queue-length">
-                        Length of Queue :
-                        <div class="queue-length-digit">
-                            5
-                        </div>
-                    </div>
-                    <div class="expected-time">
-                        Expected time :
-                        <div class="expected-time-digit">
-                            90 min
-                        </div>
-                    </div>
-                </div>
-                <div class="extra-option">
-                    <div class="book-button" onclick="login()">
-                        <button>BOOK</button>
-                    </div>
-                    <div class="analysis">
-                        <div class="main">
-                            <a href="" class="link">Check Shop Analysis</a><br>
-                            </div>
-                            
-                            <div class="popup"><iframe class="popupiframe"></iframe></div>
-                            <div class="popupdarkbg"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-box">
-                <div class="shop-detail">
-                    <div class="shop-image" style="background-image: url(./image/shop-image.jpg);"></div>
-                    <div class="shop-info">
-                        <div class="shop-name">
-                            Royal Razor
-                        </div>
-                        <div class="shop-location">
-                            46A/1B Near Santosh Sweets, Behind SBI Bank, Teliarganj, Prayagraj, Uttar Pradesh 211002
-                        </div>
-                    </div>
-                </div>
-                <div class="queue-detail">
-                    <div class="queue-length">
-                        Length of Queue :
-                        <div class="queue-length-digit">
-                            5
-                        </div>
-                    </div>
-                    <div class="expected-time">
-                        Expected time :
-                        <div class="expected-time-digit">
-                            90 min
-                        </div>
-                    </div>
-                </div>
-                <div class="extra-option">
-                    <div class="book-button" onclick="login()">
-                        <button>BOOK</button>
-                    </div>
-                    <div class="analysis">
-                        <div class="main">
-                            <a href="" class="link">Check Shop Analysis</a><br>
-                            </div>
-                            
-                            <div class="popup"><iframe class="popupiframe"></iframe></div>
-                            <div class="popupdarkbg"></div>
-                    </div>
-                </div>
-            </div>
+                </div> -->
         </div>
 
         <div class="some-features">
@@ -267,13 +250,10 @@ Campus, Prayagraj,
     </footer>
 
     <script src="./navbarNorm.js"></script>
-
     <!-- <script>window.PICKAXE=window.PICKAXE||{pickaxes:[],style:"kHsjoCQGgI0GWASmgIdIAxiDA6wgM6CMbgC4UgDDAXYEAvDIBoGEBgG4CAWQIGYBgwCqApdoEjggjIaCcCoCA9gVAaAnBYBkqgBkKBwWoARYgJhrAFwqAFQEAHkIAXAQAASgbCfAhqSAAAsDMAYEc+QJckgGXFAhUGBQ30DEcIGo0wBBdgS5VAcAaATm8A1GoCpYQJQmgEVYAcgDBA9kCAuIUAiEoAAFQGrsgCKKAGKAFxKAsAmAQjSADFiACCIASoAACIBA+oAAeoBI8IAfGoAiEYAoCYAsaYAAIYA0boA6QYBDP4CwJYBPVIAWQYB8QoB6EIArJ4AAg4ByaoA9OYBFQYCDf4AYCYBJPoCLhoBlj4Ajk4A3mIChd4CBfYCpUYBYVYCNsYBnY4Aza4Cfv4BJe4Avp4BMKoANqoAMSIBUFIDP4QDigDKKgGHEgCFxgIACgAAtgCBdgIRigEAxgEIQgAWBgBR5gERQQBCxYABwsAAFGAClJABDUgAABwCjiYAYhYAoIA0KEAcziAAhCAL2AMhBAJESgFCZwCFwYBD0MALASASjFALGwgGQRwAkPIBRJsAGVyACXIABuAGjlAEhUgCjYwDi8YBOi0APjSAekNABJ5gCUiQCYlgBoQCswIAwMEAiwOAHFLADgJgG1CwDks4ABKkAhVWAEotAEE3gAaBwAoDYALDkAt8iACieAKOAPF3ACzPgGCiACAgAfIQCJUQBwQBSJIAr6kAW++AOoNAChDgADQQDCQ4BhcEADomAIEHAKaxgCBpwB9BYAAGsAYJOAd1XAM/ngCYzwBgGIBr+MA3i6AUd3AFNLgAPowATT4AidkA+YiAIzdAIahgEJRQCq1IAy5MAwrCAKxJAMYMgCLHQBjVYBR4MAiMaAEChAGxMgBV2wA4KoATBsAQDCADQJAAhUgHE8QCNxYBbj8AfKuAZhzAM2NgF3OwAgE4ANNsAhDCAcjtAIQSgABMQCNYIBNYsAIriAHQNAEoSgBrfYANUqAMiYgBwrYAAhGAFiDgDRPoACC8AGSAGvwgC+yIAsgiAGcigBlnYAAZqAB4HgBMaYAABFAA="},window.PICKAXE.pickaxes.push({id:"TrimBuddy_0KNML",type:"fab"});const{id:_fid}=window.PICKAXE.pickaxes[0];fetch(`https://embed.pickaxeproject.com/axe/api/script/${_fid}`).then((e=>e.json())).then((({v:e})=>{const t=`https://cdn.jsdelivr.net/gh/pickaxeproject/cdn@${e}/dist`;if(!document.querySelector(`script[src="${t}/bundle.js"]`)){const e=document.createElement("script");e.src=t+"/bundle.js",e.defer=!0,document.head.appendChild(e)}}));</script> -->
-    
     <script> window.chtlConfig = { chatbotId: "6358699567" } </script>
     <script async data-id="6358699567" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
     <script src="./content.js"></script>
-
     <script src="./analysis.js"></script>
     
 </body>

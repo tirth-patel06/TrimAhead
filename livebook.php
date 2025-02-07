@@ -12,6 +12,22 @@
     <link rel="stylesheet" href="./footer.css">
     <link rel="stylesheet" href="./analysis.css">
 </head>
+<?php
+$mobile=$_GET['mobile'];
+$Phone_Number=$_GET['mobile'];
+include "connection.php";
+
+$selectquery="select * from `cc_project`.`transactions` where Mobile='$mobile' ";
+
+
+$query=mysqli_query($con,$selectquery);
+$num=mysqli_num_rows($query);
+$res=mysqli_fetch_array($query);
+
+
+
+
+?>
 <body>
     <header>
         <div class="navbar">
@@ -26,26 +42,36 @@
         <aside class="sidebar">
             <h2>Dashboard</h2>
             <ul>
-                <li><a href="./alogin-index.html">Home</a></li>
-                <li><a href="./userdashboard.html">Profile</a></li>
-                <li><a href="./livebook.html">Live Booking</a></li>
-                <li><a href="./pBook.html">Previous Booking</a></li>
-                <li><a href="./index.html">Logout</a></li>
+            <li><a href="./alogin-index.php?mobile=<?php echo $Phone_Number;?>">Home</a></li>
+              
+                <li><a href="./userdashboard.php?mobile=<?php echo $Phone_Number;?>">Profile</a></li>
+          
+                <li><a href="./livebook.php?mobile=<?php echo $Phone_Number;?>">Live Booking</a></li>
+                <li><a href="./pBook.php?mobile=<?php echo $Phone_Number;?>">Previous Booking</a></li>
+                <li><a href="./index.php">Logout</a></li>
             </ul>
         </aside>
     </div>
         
     <div class="content">
+    <?php 
+
+         
+           while($res=mysqli_fetch_array($query)){
+         if(number_format($res['Queuecount']!=-1)){
+            
+           
+               ?>
         <div class="shop-element">
             <div class="content-box">
             <div class="shop-detail">
                 <div class="shop-image" style="background-image: url(./image/shop-image.jpg);"></div>
                 <div class="shop-info">
                     <div class="shop-name">
-                        Royal Razor
+                        <?php echo $res['VendorName'];?>
                     </div>
                     <div class="shop-location">
-                        46A/1B Near Santosh Sweets, Behind SBI Bank, Teliarganj, Prayagraj, Uttar Pradesh 211002
+                       
                     </div>
                 </div>
             </div>
@@ -53,13 +79,13 @@
                 <div class="queue-length">
                     Your Live Position :
                     <div class="queue-length-digit">
-                        5
+                      <?php echo number_format($res['Queuecount'])+1;?>
                     </div>
                 </div>
                 <div class="expected-time">
-                    Ecpected time :
+                    Expected time:
                     <div class="expected-time-digit">
-                        90 min
+                    <?php echo (number_format($res['Queuecount'])+1)*25;?> minutes
                     </div>
                 </div>
             </div>
@@ -68,26 +94,22 @@
                     Date of Booking : 
                     <pre> </pre>
                     <div class="book-time-digit">
-                        1 Feb,2025
+                        <?php echo $res['Times'];?>
                     </div>
                 </div>
-                <div class="book-time">
-                    Time of Booking : 
-                    <pre> </pre>
-                    <div class="book-time-digit">
-                        15:12
-                    </div>
-                </div>
+                
                 <div class="transection-id">
-                    Transection ID :
+                    Transaction ID:
                     <pre> </pre>
                     <div class="transection-id-digit">
-                        #2025trad56aa
+                        
+                    <?php echo $res['ID'];?>
                     </div>
                 </div>
             </div>
             </div>
         </div>
+        <?php }} ?>
     </div>
 
     <script src="./content.js"></script>

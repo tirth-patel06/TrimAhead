@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('DOMContentLoaded', () => {
     const mainlogo = document.querySelector('.alogin-navbar-logo');
     const enterPin = document.querySelector('.alogin-input-box');
+    const id = document.querySelector("#id").value;
   
     mainlogo.addEventListener('click', () => {
       location.href = "./alogin-index.html"
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(pincode.length == 6){
   
           console.log(pincode)
-          location.href = "./alogin_userPage.html?id="+pincode
+          location.href = "./alogin_userPage.html?id="+pincode+"&mobile="+id;
         }
         else{
           alert("Enter valid 6 digit Pincode")

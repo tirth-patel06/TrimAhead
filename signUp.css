@@ -20,7 +20,7 @@ body{
 
 .signUp-content{
     background-color: #CAD2C5;
-    height: 950px;
+    height: 870px;
     width: 500px;
     font-size: 1.2rem;
     padding: 20px;
@@ -51,7 +51,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    height: 820px;
+    height: 735px;
     width: auto;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -108,9 +108,4 @@ button:hover{
 .login-ask{
     margin: 25px 0px 0px 75px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-#photo-edit{
-    width: 200px;
-    margin-bottom: 30px;
 }

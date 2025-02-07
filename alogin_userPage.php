@@ -12,19 +12,36 @@
     <link rel="stylesheet" href="./footer.css">
     <link rel="stylesheet" href="./analysis.css">
 </head>
+<?php
+$id=$_GET['id'];
+$mobile=$_GET['mobile'];
+    include 'connection.php';
+   $selectquery="select * from `cc_project`.`owner` where Pincode='$id'";
+   $selectquery1="select * from `cc_project`.`customer` where Phone_Number='$mobile'";
+   $query=mysqli_query($con,$selectquery);
+$num=mysqli_num_rows($query);
+$res=mysqli_fetch_array($query);
+$query1=mysqli_query($con,$selectquery1);
+$num=mysqli_num_rows($query);
+$res1=mysqli_fetch_array($query1);
+if($num==0){
+    header('Location: ./noShop.html');
+}
+?>
+
 <body>
 
     <header>
         <div class="navbar">
             <div class="alogin-navbar-logo">
-                <img src="./image/Logo/OCNBG.png" alt="">
+            <a href="alogin_userPage.php?id=<?php echo $id?>&mobile=<?php echo $mobile?>"><img src="./image/Logo/OCNBG.png" alt=""></a> 
             </div>
             <div class="search">
                 <div class="search-icon">
                     <i class="fa-solid fa-magnifying-glass""></i>
                 </div>
-                <input type="text" placeholder="Enter Pincode" class="input-box">
-                <input id="id" type="hidden" value="123">
+                <input type="text" placeholder="Enter Pincode" class="alogin-input-box">
+                <input id="id" type="hidden" value="<?php echo $mobile?>">
             </div>
             <details>
                 <summary>
@@ -32,7 +49,7 @@
                         <div class="alogin-user-icon">
                             <i class="fa-regular fa-circle-user"></i>
                         </div>
-                        User's Name
+                       <?php echo $res1['Name'];?>
                     </div>
                 </summary>
                 <ul>
@@ -45,13 +62,66 @@
     </header>
 
     <div class="content">
-        <input id="mobile" type="hidden" value="<?php echo $mobile;?>">
-                 <input id="serial_no" type="hidden" value="1">
-                 <input id="vname" type="hidden" value="2">
-                 <input id="customer" type="hidden" value="2">
-                 <input id="queue" type="hidden" value="3">
-        </input>
+    <?php 
+           $i=0;
+           while($res=mysqli_fetch_array($query)){
+
+            $i=number_format($res['Queue'])*25;
+             
+           
+               ?>
         <div class="shop-element">
+            <div class="content-box">
+                <div class="shop-detail">
+                    <div class="shop-image" style="background-image: url(./image/shop-image.jpg);"></div>
+                    <div class="shop-info">
+                        <div class="shop-name">
+                        <?php echo $res['Shop_Name'];?>
+                        </div>
+                        <div class="shop-location">
+                        <?php echo $res['Address'];?>
+                        </div>
+                    </div>
+                </div>
+                <div class="queue-detail">
+                    <div class="queue-length">
+                        Length of Queue :
+                        <div class="queue-length-digit">
+                        <?php echo $res['Queue'];?>
+                        </div>
+                    </div>
+                    <div class="expected-time">
+                        Expected time :
+                        <div class="expected-time-digit">
+                        <?php echo $i;?>minute
+                        </div>
+                    </div>
+                </div>
+                <div class="extra-option">
+                <!-- onclick="book()" -->
+                    <div class="book-button" onclick="book()">
+                 <button >BOOK
+                 <input id="mobile" type="hidden" value="<?php echo $mobile;?>">
+                 <input id="serial_no" type="hidden" value="<?php echo $res['serial_no'];?>">
+                 <input id="vname" type="hidden" value="<?php echo $res['Shop_Name'];?>">
+                 <input id="customer" type="hidden" value="<?php echo $res1['Name'];?>">
+                 <input id="queue" type="hidden" value="<?php echo $res['Queue'];?>">
+                 </button>
+                    </div>
+                   
+                    <div class="analysis">
+                        <div class="main">
+                        <br>
+                            <a href="graph.php" class="link">Check Shop Analysis</a><br>
+                            </div>
+                            
+                            <div class="popup"><iframe class="popupiframe"></iframe></div>
+                            <div class="popupdarkbg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="shop-element">
             <div class="content-box">
                 <div class="shop-detail">
                     <div class="shop-image" style="background-image: url(./image/shop-image.jpg);"></div>
@@ -92,49 +162,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="shop-element">
-            <div class="content-box">
-                <div class="shop-detail">
-                    <div class="shop-image" style="background-image: url(./image/shop-image.jpg);"></div>
-                    <div class="shop-info">
-                        <div class="shop-name">
-                            Royal Razor
-                        </div>
-                        <div class="shop-location">
-                            46A/1B Near Santosh Sweets, Behind SBI Bank, Teliarganj, Prayagraj, Uttar Pradesh 211002
-                        </div>
-                    </div>
-                </div>
-                <div class="queue-detail">
-                    <div class="queue-length">
-                        Length of Queue :
-                        <div class="queue-length-digit">
-                            5
-                        </div>
-                    </div>
-                    <div class="expected-time">
-                        Expected time :
-                        <div class="expected-time-digit">
-                            90 min
-                        </div>
-                    </div>
-                </div>
-                <div class="extra-option">
-                    <div class="book-button" onclick="book()">
-                        <button>BOOK</button>
-                    </div>
-                    <div class="analysis">
-                        <div class="main">
-                            <a href="" class="link">Check Shop Analysis</a><br>
-                            </div>
-                            
-                            <div class="popup"><iframe class="popupiframe"></iframe></div>
-                            <div class="popupdarkbg"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> -->
+        <?php }?>
+
     </div>
 
     <footer>
@@ -214,3 +244,4 @@ Campus, Prayagraj,
     
 </body>
 </html>
+

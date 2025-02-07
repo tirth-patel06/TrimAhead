@@ -1,5 +1,5 @@
 function login(){
-    location.href = "./login.html"
+    location.href = "./login.php"
 }
 
 function book(){
@@ -11,4 +11,12 @@ function book(){
     const Name = document.querySelector("#customer").value;
 
     location.href = "./payment.php?mob="+mobile+"&vid="+serial_no+"&queue="+Queue+"&vname="+Shop_Name+"&cname="+Name
+
+
 }
+function payment(){
+    location.href="./paymentloading.html"
+}
+
+//onclick="book()"
+//  <a href="payment.php?mob=<?php echo $mobile?>&vid=<?php echo $res['serial_no']?>&queue=<?php echo $res['Queue'];?>&vname=<?php echo $res['Shop_Name'];?>&cname=<?php echo $res1['Name'];?> ">Book</a>

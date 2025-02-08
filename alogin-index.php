@@ -318,9 +318,9 @@ Campus, Prayagraj,
     <script src="./navbarNorm.js"></script>
     <script>window.PICKAXE=window.PICKAXE||{pickaxes:[],style:"kHsjoCQGgI0GWASmgIdIAxiDA6wgM6CMbgC4UgDDAXYEAvDIBoGEBgG4CAWQIGYBgwCqApdoEjggjIaCcCoCA9gVAaAnBYBkqgBkKBwWoARYgJhrAFwqAFQEAHkIAXAQAASgbCfAhqSAAAsDMAYEc+QJckgGXFAhUGBQ30DEcIGo0wBBdgS5VAcAaATm8A1GoCpYQJQmgEVYAcgDBA9kCAuIUAiEoAAFQGrsgCKKAGKAFxKAsAmAQjSADFiACCIASoAACIBA+oAAeoBI8IAfGoAiEYAoCYAsaYAAIYA0boA6QYBDP4CwJYBPVIAWQYB8QoB6EIArJ4AAg4ByaoA9OYBFQYCDf4AYCYBJPoCLhoBlj4Ajk4A3mIChd4CBfYCpUYBYVYCNsYBnY4Aza4Cfv4BJe4Avp4BMKoANqoAMSIBUFIDP4QDigDKKgGHEgCFxgIACgAAtgCBdgIRigEAxgEIQgAWBgBR5gERQQBCxYABwsAAFGAClJABDUgAABwCjiYAYhYAoIA0KEAcziAAhCAL2AMhBAJESgFCZwCFwYBD0MALASASjFALGwgGQRwAkPIBRJsAGVyACXIABuAGjlAEhUgCjYwDi8YBOi0APjSAekNABJ5gCUiQCYlgBoQCswIAwMEAiwOAHFLADgJgG1CwDks4ABKkAhVWAEotAEE3gAaBwAoDYALDkAt8iACieAKOAPF3ACzPgGCiACAgAfIQCJUQBwQBSJIAr6kAW++AOoNAChDgADQQDCQ4BhcEADomAIEHAKaxgCBpwB9BYAAGsAYJOAd1XAM/ngCYzwBgGIBr+MA3i6AUd3AFNLgAPowATT4AidkA+YiAIzdAIahgEJRQCq1IAy5MAwrCAKxJAMYMgCLHQBjVYBR4MAiMaAEChAGxMgBV2wA4KoATBsAQDCADQJAAhUgHE8QCNxYBbj8AfKuAZhzAM2NgF3OwAgE4ANNsAhDCAcjtAIQSgABMQCNYIBNYsAIriAHQNAEoSgBrfYANUqAMiYgBwrYAAhGAFiDgDRPoACC8AGSAGvwgC+yIAsgiAGcigBlnYAAZqAB4HgBMaYAABFAA="},window.PICKAXE.pickaxes.push({id:"TrimBuddy_0KNML",type:"fab"});const{id:_fid}=window.PICKAXE.pickaxes[0];fetch(`https://embed.pickaxeproject.com/axe/api/script/${_fid}`).then((e=>e.json())).then((({v:e})=>{const t=`https://cdn.jsdelivr.net/gh/pickaxeproject/cdn@${e}/dist`;if(!document.querySelector(`script[src="${t}/bundle.js"]`)){const e=document.createElement("script");e.src=t+"/bundle.js",e.defer=!0,document.head.appendChild(e)}}));</script>
     <!-- <script> window.chtlConfig = { chatbotId: "6358699567" } </script>
-    <script async data-id="6358699567" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+    <script async data-id="6358699567" id="chatling-embed-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>-->
     <script src="./content.js"></script>
-    <script src="./analysis.js"></script> -->
+    <script src="./analysis.js"></script> 
     
 </body>
 </html>
